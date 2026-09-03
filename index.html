@@ -199,7 +199,7 @@
               />
             </div>
 
-            <div id="compare-before" class="absolute inset-0 w-full h-full pointer-events-none" style="clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);">
+            <div id="compare-before" class="absolute inset-0 w-full h-full pointer-events-none" style="clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);">
               <img 
                 src="https://i.postimg.cc/C5Pr8BhX/raw-man-jpg.png" 
                 alt="Raw Asset" 
@@ -266,7 +266,6 @@
       const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
       scene.add(ambientLight);
 
-      // Spokojne, ciepłe fioletowo-różowe oświetlenie sceny
       const pinkGlow = new THREE.PointLight(0xd946ef, 3.2, 50);
       pinkGlow.position.set(0, -4, 10);
       scene.add(pinkGlow);
@@ -326,7 +325,6 @@
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.restore();
 
-      // Elegancka różowa krawędź kafelka
       ctx.strokeStyle = 'rgba(217, 70, 239, 0.45)';
       ctx.lineWidth = 5;
       if (ctx.roundRect) {
@@ -521,7 +519,7 @@
       renderer.render(scene, camera);
     }
 
-    // Suwak Before / After zoptymalizowany pod kątem braku skalowania
+    // Suwak Before / After zoptymalizowany pod pozycję twarzy i brak skalowania
     function setupComparisonSlider() {
       const container = document.getElementById('compare-container');
       const before = document.getElementById('compare-before');
@@ -536,12 +534,16 @@
         if (x > rect.width) x = rect.width;
         const pct = (x / rect.width) * 100;
         
-        // Płynne przycinanie przez clip-path - zdjęcie w ogóle się nie skaluje!
-        before.style.clipPath = `polygon(0 0, ${pct}% 0, ${pct}% 100%, 0 100%)`;
+        // Płynne przycinanie od prawej strony, żeby twarz i postać były w pełni widoczne
+        before.style.clipPath = `polygon(${pct}% 0, 100% 0, 100% 100%, ${pct}% 100%)`;
         divider.style.left = pct + '%';
       }
 
       if (container) {
+        // Pozycja początkowa na 50%
+        before.style.clipPath = 'polygon(50% 0, 100% 0, 100% 100%, 50% 100%)';
+        divider.style.left = '50%';
+
         container.addEventListener('mousedown', (e) => {
           isDragging = true;
           move(e.clientX);
