@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maja Wieczorek | Lead Thumbnail Designer &amp; Key Art Specialist</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #06050a;
+      color: #f3f4f6;
+      overflow-x: hidden;
+      user-select: none;
+    }
+
+    /* Canvas Three.js: delikatnie wyłaniające się i lewitujące kafelki w tle */
+    #bg-webgl-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Szklane panele w spokojnej, luksusowej ciemnej tonacji */
+    .glass-card {
+      background: rgba(13, 11, 20, 0.82);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card:hover {
+      border-color: rgba(224, 102, 219, 0.5);
+      box-shadow: 0 0 35px -5px rgba(224, 102, 219, 0.28);
+    }
+
+    /* Akcenty różowe (ciemniejszy, elegancki róż) */
+    .glow-pink {
+      box-shadow: 0 0 35px -5px rgba(224, 102, 219, 0.32);
+    }
+    .glow-pink-slider {
+      box-shadow: 0 0 25px rgba(224, 102, 219, 0.95), 0 0 45px rgba(255, 168, 249, 0.55);
+    }
+
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="min-h-full selection:bg-[#d946ef] selection:text-white">
+
+  <!-- Three.js: lewitujące i delikatnie pojawiające się kafelki w tle -->
+  <canvas id="bg-webgl-canvas"></canvas>
+
+  <!-- Winietowanie i subtelna głębia tła -->
+  <div class="fixed inset-0 pointer-events-none z-0 bg-gradient-to-t from-[#06050a] via-transparent to-[#06050a]/85"></div>
+  <div class="fixed inset-0 pointer-events-none z-0" style="box-shadow: inset 0 0 160px rgba(0,0,0,0.92);"></div>
+
+  <!-- Główny kontener -->
+  <div class="relative z-10 min-h-screen flex flex-col justify-between max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+    <!-- NAWIGACJA / HEADER (tylko imię, stanowisko i bezpośredni kontakt) -->
+    <header class="flex items-center justify-between gap-4 py-3 border-b border-zinc-800/80">
+      <div class="flex items-center gap-3 sm:gap-4">
+        <span class="font-black text-xl sm:text-2xl text-white tracking-tight">MAJA WIECZOREK</span>
+        <span class="px-4 py-1.5 rounded-2xl text-xs sm:text-[13px] font-extrabold uppercase tracking-wider bg-fuchsia-500/15 text-fuchsia-300 border border-fuchsia-500/35 shadow-sm shadow-fuchsia-500/10">
+          LEAD THUMBNAIL DESIGNER &amp; KEY ART SPECIALIST
+        </span>
+      </div>
+
+      <div class="flex items-center gap-3 sm:gap-4">
+        <!-- Discord z kopiowaniem (powiększony, czarne szkło) -->
+        <button onclick="copyDiscordHandle()" class="glass-card px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl border border-zinc-800 hover:border-fuchsia-500/60 text-xs sm:text-sm font-semibold text-zinc-300 hover:text-white transition flex items-center gap-2.5 hover:scale-[1.02]">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+          <span>Discord: <strong class="text-white font-bold">wiecz0rek_</strong></span>
+        </button>
+
+        <!-- Email (taki sam styl jak Discord na czarno, powiększony) -->
+        <a href="mailto:m3.wiecz0rek@gmail.com" class="glass-card px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl border border-zinc-800 hover:border-fuchsia-500/60 text-xs sm:text-sm font-semibold text-zinc-300 hover:text-white transition flex items-center gap-2.5 hover:scale-[1.02]">
+          <svg class="w-4 h-4 text-fuchsia-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <span class="hidden sm:inline">m3.wiecz0rek@gmail.com</span>
+          <span class="sm:hidden">Email</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- GŁÓWNA ZAWARTOŚĆ -->
+    <main class="my-10 space-y-16">
+
+      <!-- =========================================================================
+           SEKCJA: TEST A / B (tylko napis i dwa duże zdjęcia obok siebie)
+           ========================================================================= -->
+      <section class="space-y-6">
+        
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <span class="w-3 h-3 rounded-full bg-fuchsia-500 animate-pulse"></span>
+            <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight">
+              TEST A / B
+            </h1>
+          </div>
+        </div>
+
+        <!-- Dwie grafiki A i B w formacie 16:9 obok siebie -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          
+          <!-- ZDJĘCIE A -->
+          <div class="glass-card rounded-3xl p-3 sm:p-4 border border-zinc-800/80 hover:border-fuchsia-500/60 transition duration-300">
+            <div class="relative aspect-video rounded-2xl overflow-hidden bg-black shadow-2xl group">
+              <img 
+                src="https://i.postimg.cc/NFJCX9Gt/final-cover-jpg.png" 
+                alt="Test A" 
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                onerror="this.src='https://placehold.co/1280x720/121018/d946ef?text=IMAGE+A';"
+              />
+              <div class="absolute top-3 left-3 bg-black/85 backdrop-blur-md px-4 py-1.5 rounded-xl text-xs font-black text-fuchsia-300 border border-fuchsia-500/40 shadow-lg">
+                A
+              </div>
+            </div>
+          </div>
+
+          <!-- ZDJĘCIE B -->
+          <div class="glass-card rounded-3xl p-3 sm:p-4 border border-zinc-800/80 hover:border-fuchsia-500/60 transition duration-300">
+            <div class="relative aspect-video rounded-2xl overflow-hidden bg-black shadow-2xl group">
+              <img 
+                src="https://i.postimg.cc/nrRgVGHC/magnific-keep-the-current-composit-4RYrm2B9Aa.png" 
+                alt="Test B" 
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                onerror="this.src='https://placehold.co/1280x720/121018/d946ef?text=IMAGE+B';"
+              />
+              <div class="absolute top-3 left-3 bg-black/85 backdrop-blur-md px-4 py-1.5 rounded-xl text-xs font-black text-fuchsia-300 border border-fuchsia-500/40 shadow-lg">
+                B
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- =========================================================================
+           SEKCJA: CREATIVE PROCESS (3 duże zdjęcia w rzędzie + suwak Before/After)
+           ========================================================================= -->
+      <section class="space-y-8 pt-8 border-t border-zinc-800/80">
+        
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <span class="w-3 h-3 rounded-full bg-purple-400"></span>
+            <h2 class="text-2xl sm:text-4xl font-black text-white tracking-tight">
+              CREATIVE PROCESS
+            </h2>
+          </div>
+        </div>
+
+        <!-- 3 DUŻE POWIĘKSZONE ZDJĘCIA W JEDNYM RZĘDZIE -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          
+          <!-- 1. Model ze stocku -->
+          <div class="glass-card rounded-3xl p-4 sm:p-5 flex flex-col justify-between">
+            <div class="relative aspect-video sm:aspect-[4/3] rounded-2xl overflow-hidden bg-black border border-zinc-800 shadow-xl group">
+              <img 
+                src="https://i.postimg.cc/C5Pr8BhX/raw-man-jpg.png" 
+                alt="Raw Stock Talent" 
+                class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" 
+                onerror="this.src='https://placehold.co/800x600/111/d946ef?text=Raw+Model';" 
+              />
+            </div>
+          </div>
+
+          <!-- 2. Nocny dom / tło -->
+          <div class="glass-card rounded-3xl p-4 sm:p-5 flex flex-col justify-between">
+            <div class="relative aspect-video sm:aspect-[4/3] rounded-2xl overflow-hidden bg-black border border-zinc-800 shadow-xl group">
+              <img 
+                src="https://i.postimg.cc/KjqpTkcy/bg-house-jpg.jpg" 
+                alt="Night House Setting" 
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                onerror="this.src='https://placehold.co/800x600/111/d946ef?text=House';" 
+              />
+            </div>
+          </div>
+
+          <!-- 3. Płonąca gotówka (podmieniona w miejsce płaskiego banknotu) -->
+          <div class="glass-card rounded-3xl p-4 sm:p-5 flex flex-col justify-between">
+            <div class="relative aspect-video sm:aspect-[4/3] rounded-2xl overflow-hidden bg-black border border-zinc-800 shadow-xl group">
+              <img 
+                src="https://i.postimg.cc/FzWCSdFh/money-fire-png.png" 
+                alt="Burning Money Elements" 
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                onerror="this.src='https://placehold.co/800x600/111/d946ef?text=Money+Fire';" 
+              />
+            </div>
+          </div>
+
+        </div>
+
+        <!-- FINAŁ PROCESU: DUŻY SUWAK BEFORE / AFTER -->
+        <div class="glass-card rounded-3xl p-4 sm:p-6 glow-pink">
+          <div id="compare-container" class="relative w-full aspect-video rounded-2xl overflow-hidden border border-zinc-700 bg-black cursor-ew-resize select-none">
+            
+            <!-- AFTER: Gotowa okładka -->
+            <div class="absolute inset-0 w-full h-full">
+              <img 
+                src="https://i.postimg.cc/NFJCX9Gt/final-cover-jpg.png" 
+                alt="Final Result" 
+                class="w-full h-full object-cover select-none pointer-events-none"
+                onerror="this.src='https://placehold.co/1280x720/121018/d946ef?text=FINAL+COVER';"
+              />
+            </div>
+
+            <!-- BEFORE: Surowy model ze stocku -->
+            <div id="compare-before" class="absolute inset-0 h-full overflow-hidden" style="width: 50%;">
+              <div class="relative w-full h-full" style="width: 1200px;">
+                <img 
+                  src="https://i.postimg.cc/C5Pr8BhX/raw-man-jpg.png" 
+                  alt="Raw Asset" 
+                  class="w-full h-full object-cover object-top select-none pointer-events-none brightness-90 saturate-75"
+                  onerror="this.src='https://placehold.co/1280x720/181a20/aaa?text=RAW+MODEL';"
+                />
+              </div>
+            </div>
+
+            <!-- Uchwyt suwaka -->
+            <div id="compare-divider" class="absolute top-0 bottom-0 w-1 bg-fuchsia-400 cursor-ew-resize glow-pink-slider z-20" style="left: 50%;">
+              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-gradient-to-tr from-fuchsia-600 to-purple-400 border-2 border-white flex items-center justify-center text-white shadow-2xl">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 7l-5 5 5 5m8-10l5 5-5 5"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="pt-8 border-t border-zinc-800/80 flex flex-col sm:flex-row items-center justify-end gap-4 text-xs text-zinc-500">
+      <div class="flex items-center gap-4 text-zinc-400">
+        <button onclick="copyDiscordHandle()" class="hover:text-white transition font-medium">Discord: wiecz0rek_</button>
+        <span>•</span>
+        <a href="mailto:m3.wiecz0rek@gmail.com" class="hover:text-fuchsia-400 transition font-medium">m3.wiecz0rek@gmail.com</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Toast z powiadomieniem -->
+  <div id="toast-notify" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-3 bg-zinc-900 border border-fuchsia-500 text-white px-5 py-3 rounded-2xl shadow-2xl">
+    <div class="w-2.5 h-2.5 rounded-full bg-fuchsia-500 animate-pulse"></div>
+    <span id="toast-text" class="text-xs font-bold">Skopiowano!</span>
+  </div>
+
+  <!-- =========================================================================
+       THREE.JS: SPOKOJNE, DELIKATNIE POJAWIAJĄCE SIĘ I LEWITUJĄCE KAFELKI 3D
+       ========================================================================= -->
+  <script>
+    let scene, camera, renderer;
+    let floatingCards = [];
+    let bokehParticles;
+    let mouseX = 0, mouseY = 0;
+
+    const portfolioSources = [
+      'https://i.postimg.cc/NFJCX9Gt/final-cover-jpg.png',
+      'https://i.postimg.cc/nrRgVGHC/magnific-keep-the-current-composit-4RYrm2B9Aa.png',
+      'https://i.postimg.cc/FzWCSdFh/money-fire-png.png',
+      'https://i.postimg.cc/KjqpTkcy/bg-house-jpg.jpg',
+      'https://i.postimg.cc/C5Pr8BhX/raw-man-jpg.png'
+    ];
+
+    function init3DBackground() {
+      const canvas = document.getElementById('bg-webgl-canvas');
+      scene = new THREE.Scene();
+
+      camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
+      camera.position.z = 18;
+
+      renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
+      scene.add(ambientLight);
+
+      // Spokojne, ciepłe fioletowo-różowe oświetlenie sceny
+      const pinkGlow = new THREE.PointLight(0xd946ef, 3.2, 50);
+      pinkGlow.position.set(0, -4, 10);
+      scene.add(pinkGlow);
+
+      const purpleGlow = new THREE.PointLight(0xa855f7, 2.0, 50);
+      purpleGlow.position.set(12, 12, 8);
+      scene.add(purpleGlow);
+
+      createFloatingSquares();
+      createBokehField();
+
+      window.addEventListener('mousemove', (e) => {
+        mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+        mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+      });
+
+      window.addEventListener('resize', onWindowResize);
+      animate3DScene();
+    }
+
+    function createBlurredSquareTexture(imgElement, blurPx = 12) {
+      const canvas = document.createElement('canvas');
+      canvas.width = 384;
+      canvas.height = 384;
+      const ctx = canvas.getContext('2d');
+      const cornerRadius = 32;
+
+      ctx.save();
+      ctx.beginPath();
+      if (ctx.roundRect) {
+        ctx.roundRect(12, 12, canvas.width - 24, canvas.height - 24, cornerRadius);
+      } else {
+        ctx.rect(12, 12, canvas.width - 24, canvas.height - 24);
+      }
+      ctx.clip();
+
+      ctx.filter = `blur(${blurPx}px)`;
+
+      if (imgElement && imgElement.complete && imgElement.naturalWidth > 0) {
+        const nw = imgElement.naturalWidth;
+        const nh = imgElement.naturalHeight;
+        const minDim = Math.min(nw, nh);
+        const sx = (nw - minDim) / 2;
+        const sy = (nh - minDim) / 2;
+        ctx.drawImage(imgElement, sx, sy, minDim, minDim, 0, 0, canvas.width, canvas.height);
+      } else {
+        const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        grad.addColorStop(0, '#260b26');
+        grad.addColorStop(0.5, '#c026d3');
+        grad.addColorStop(1, '#06050a');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+      ctx.filter = 'none';
+
+      ctx.fillStyle = 'rgba(6, 5, 10, 0.32)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.restore();
+
+      // Elegancka różowa krawędź kafelka
+      ctx.strokeStyle = 'rgba(217, 70, 239, 0.45)';
+      ctx.lineWidth = 5;
+      if (ctx.roundRect) {
+        ctx.beginPath();
+        ctx.roundRect(12, 12, canvas.width - 24, canvas.height - 24, cornerRadius);
+        ctx.stroke();
+      }
+
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.minFilter = THREE.LinearFilter;
+      texture.magFilter = THREE.LinearFilter;
+      return { texture, canvas, ctx, imgElement };
+    }
+
+    function createFloatingSquares() {
+      const squareGeo = new THREE.PlaneGeometry(3.2, 3.2);
+      const cardCount = window.innerWidth < 768 ? 16 : 28;
+
+      const loadedImgs = portfolioSources.map(src => {
+        const img = new Image();
+        img.src = src;
+        return img;
+      });
+
+      for (let i = 0; i < cardCount; i++) {
+        const imgItem = loadedImgs[i % loadedImgs.length];
+        const blurAmount = 8 + (i % 3) * 3;
+        const texObj = createBlurredSquareTexture(imgItem, blurAmount);
+
+        if (imgItem.complete && imgItem.naturalWidth > 0) {
+          refreshTexture(texObj, blurAmount);
+        } else {
+          imgItem.onload = () => {
+            refreshTexture(texObj, blurAmount);
+          };
+        }
+
+        const material = new THREE.MeshStandardMaterial({
+          map: texObj.texture,
+          side: THREE.DoubleSide,
+          transparent: true,
+          opacity: 0.0, // Zaczynają niewidoczne, łagodnie się wyłaniają
+          roughness: 0.3,
+          metalness: 0.15
+        });
+
+        const mesh = new THREE.Mesh(squareGeo, material);
+        
+        // Rozłożenie po całej scenie
+        const baseX = (Math.random() - 0.5) * 34;
+        const baseY = (Math.random() - 0.5) * 24;
+        const baseZ = (Math.random() - 0.5) * 22 - 3;
+
+        mesh.position.set(baseX, baseY, baseZ);
+        mesh.rotation.set(
+          (Math.random() - 0.5) * 0.4,
+          (Math.random() - 0.5) * 0.4,
+          (Math.random() - 0.5) * 0.3
+        );
+        const scale = 0.8 + Math.random() * 0.5;
+        mesh.scale.set(scale, scale, scale);
+
+        scene.add(mesh);
+
+        floatingCards.push({
+          mesh: mesh,
+          material: material,
+          baseX: baseX,
+          baseY: baseY,
+          baseZ: baseZ,
+          phase: Math.random() * Math.PI * 2,
+          fadeSpeed: 0.4 + Math.random() * 0.5,
+          maxOpacity: 0.35 + (i % 3) * 0.12,
+          swaySpeed: 0.3 + Math.random() * 0.3
+        });
+      }
+    }
+
+    function refreshTexture(texObj, blurPx) {
+      const c = texObj.canvas;
+      const ctx = texObj.ctx;
+      const cornerRadius = 32;
+
+      ctx.clearRect(0, 0, c.width, c.height);
+
+      ctx.save();
+      ctx.beginPath();
+      if (ctx.roundRect) {
+        ctx.roundRect(12, 12, c.width - 24, c.height - 24, cornerRadius);
+      } else {
+        ctx.rect(12, 12, c.width - 24, c.height - 24);
+      }
+      ctx.clip();
+
+      ctx.filter = `blur(${blurPx}px)`;
+
+      const img = texObj.imgElement;
+      if (img && img.naturalWidth > 0) {
+        const nw = img.naturalWidth;
+        const nh = img.naturalHeight;
+        const minDim = Math.min(nw, nh);
+        const sx = (nw - minDim) / 2;
+        const sy = (nh - minDim) / 2;
+        ctx.drawImage(img, sx, sy, minDim, minDim, 0, 0, c.width, c.height);
+      }
+      ctx.filter = 'none';
+
+      ctx.fillStyle = 'rgba(6, 5, 10, 0.32)';
+      ctx.fillRect(0, 0, c.width, c.height);
+      ctx.restore();
+
+      ctx.strokeStyle = 'rgba(217, 70, 239, 0.45)';
+      ctx.lineWidth = 5;
+      if (ctx.roundRect) {
+        ctx.beginPath();
+        ctx.roundRect(12, 12, c.width - 24, c.height - 24, cornerRadius);
+        ctx.stroke();
+      }
+
+      texObj.texture.needsUpdate = true;
+    }
+
+    function createBokehField() {
+      const count = 75;
+      const geo = new THREE.BufferGeometry();
+      const pos = new Float32Array(count * 3);
+
+      for (let i = 0; i < count * 3; i += 3) {
+        pos[i] = (Math.random() - 0.5) * 40;
+        pos[i + 1] = (Math.random() - 0.5) * 30;
+        pos[i + 2] = (Math.random() - 0.5) * 30;
+      }
+      geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+
+      const bokehCanvas = document.createElement('canvas');
+      bokehCanvas.width = 64;
+      bokehCanvas.height = 64;
+      const bCtx = bokehCanvas.getContext('2d');
+      const grad = bCtx.createRadialGradient(32, 32, 0, 32, 32, 32);
+      grad.addColorStop(0, 'rgba(240, 171, 252, 0.85)');
+      grad.addColorStop(0.5, 'rgba(217, 70, 239, 0.25)');
+      grad.addColorStop(1, 'rgba(217, 70, 239, 0)');
+      bCtx.fillStyle = grad;
+      bCtx.fillRect(0, 0, 64, 64);
+
+      const bokehTex = new THREE.CanvasTexture(bokehCanvas);
+      const mat = new THREE.PointsMaterial({
+        size: 1.4,
+        map: bokehTex,
+        transparent: true,
+        opacity: 0.55,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false
+      });
+
+      bokehParticles = new THREE.Points(geo, mat);
+      scene.add(bokehParticles);
+    }
+
+    function onWindowResize() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    function animate3DScene() {
+      requestAnimationFrame(animate3DScene);
+
+      // Płynna paralaksa za ruchem kursora
+      camera.position.x += (mouseX * 2.0 - camera.position.x) * 0.035;
+      camera.position.y += (mouseY * 1.5 - camera.position.y) * 0.035;
+      camera.lookAt(0, 0, 0);
+
+      const time = performance.now() * 0.001;
+
+      // Zamiast spadania: spokojne wyłanianie się (fade-in), pulsowanie i miękka lewitacja
+      for (let i = 0; i < floatingCards.length; i++) {
+        const c = floatingCards[i];
+
+        // Delikatne pojawianie się i znikanie (breathe / fade in/out)
+        const pulse = (Math.sin(time * c.fadeSpeed + c.phase) + 1) / 2;
+        c.material.opacity = 0.05 + pulse * c.maxOpacity;
+
+        // Łagodne unoszenie się wokół pozycji bazowej
+        c.mesh.position.y = c.baseY + Math.sin(time * c.swaySpeed + c.phase) * 0.7;
+        c.mesh.position.x = c.baseX + Math.cos(time * (c.swaySpeed * 0.7) + c.phase) * 0.5;
+
+        // Subtelna rotacja
+        c.mesh.rotation.z = Math.sin(time * 0.2 + c.phase) * 0.08;
+      }
+
+      // Falowanie cząsteczek bokeh
+      if (bokehParticles) {
+        const arr = bokehParticles.geometry.attributes.position.array;
+        for (let b = 1; b < arr.length; b += 3) {
+          arr[b] += 0.008;
+          if (arr[b] > 15) arr[b] = -15;
+        }
+        bokehParticles.geometry.attributes.position.needsUpdate = true;
+      }
+
+      renderer.render(scene, camera);
+    }
+
+    // Suwak Before / After
+    function setupComparisonSlider() {
+      const container = document.getElementById('compare-container');
+      const before = document.getElementById('compare-before');
+      const divider = document.getElementById('compare-divider');
+      let isDragging = false;
+
+      function move(clientX) {
+        if (!container) return;
+        const rect = container.getBoundingClientRect();
+        let x = clientX - rect.left;
+        if (x < 0) x = 0;
+        if (x > rect.width) x = rect.width;
+        const pct = (x / rect.width) * 100;
+        before.style.width = pct + '%';
+        divider.style.left = pct + '%';
+      }
+
+      if (container) {
+        container.addEventListener('mousedown', (e) => {
+          isDragging = true;
+          move(e.clientX);
+        });
+        window.addEventListener('mousemove', (e) => {
+          if (isDragging) move(e.clientX);
+        });
+        window.addEventListener('mouseup', () => { isDragging = false; });
+
+        container.addEventListener('touchstart', (e) => {
+          isDragging = true;
+          move(e.touches[0].clientX);
+        }, { passive: true });
+        window.addEventListener('touchmove', (e) => {
+          if (isDragging) move(e.touches[0].clientX);
+        }, { passive: true });
+        window.addEventListener('touchend', () => { isDragging = false; });
+      }
+    }
+
+    // Kopiowanie Discorda i powiadomienie toast
+    function showToast(msg) {
+      const toast = document.getElementById('toast-notify');
+      const text = document.getElementById('toast-text');
+      if (!toast || !text) return;
+
+      text.innerText = msg;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 2600);
+    }
+
+    function copyDiscordHandle() {
+      const handle = 'wiecz0rek_';
+      const el = document.createElement('input');
+      el.value = handle;
+      document.body.appendChild(el);
+      el.select();
+      try {
+        document.execCommand('copy');
+        showToast('Discord copied: ' + handle);
+      } catch (err) {
+        showToast('Discord: ' + handle);
+      }
+      document.body.removeChild(el);
+    }
+
+    // Inicjalizacja po załadowaniu DOM
+    if (document.readyState === 'loading') {
+      window.addEventListener('DOMContentLoaded', () => {
+        init3DBackground();
+        setupComparisonSlider();
+      });
+    } else {
+      init3DBackground();
+      setupComparisonSlider();
+    }
+  </script>
+</body>
+</html>
