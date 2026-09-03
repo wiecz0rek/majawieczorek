@@ -64,13 +64,17 @@
 </head>
 <body class="min-h-full selection:bg-[#d946ef] selection:text-white">
 
+  <!-- Three.js: lewitujące i delikatnie pojawiające się kafelki w tle -->
   <canvas id="bg-webgl-canvas"></canvas>
 
+  <!-- Winietowanie i subtelna głębia tła -->
   <div class="fixed inset-0 pointer-events-none z-0 bg-gradient-to-t from-[#06050a] via-transparent to-[#06050a]/85"></div>
   <div class="fixed inset-0 pointer-events-none z-0" style="box-shadow: inset 0 0 160px rgba(0,0,0,0.92);"></div>
 
+  <!-- Główny kontener -->
   <div class="relative z-10 min-h-screen flex flex-col justify-between max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
+    <!-- NAWIGACJA / HEADER -->
     <header class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 py-4 border-b border-zinc-800/80">
       <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 w-full sm:w-auto">
         <span class="font-black text-xl sm:text-2xl text-white tracking-tight">MAJA WIECZOREK</span>
@@ -80,11 +84,13 @@
       </div>
 
       <div class="flex items-center gap-2 sm:gap-4 w-full sm:w-auto justify-between sm:justify-end">
+        <!-- Discord z kopiowaniem -->
         <button onclick="copyDiscordHandle()" class="glass-card px-4 py-2 sm:px-6 sm:py-3 rounded-2xl border border-zinc-800 hover:border-fuchsia-500/60 text-xs sm:text-sm font-semibold text-zinc-300 hover:text-white transition flex items-center gap-2 hover:scale-[1.02]">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
           <span>Discord: <strong class="text-white font-bold">wiecz0rek_</strong></span>
         </button>
 
+        <!-- Email -->
         <a href="mailto:m3.wiecz0rek@gmail.com" class="glass-card px-4 py-2 sm:px-6 sm:py-3 rounded-2xl border border-zinc-800 hover:border-fuchsia-500/60 text-xs sm:text-sm font-semibold text-zinc-300 hover:text-white transition flex items-center gap-2 hover:scale-[1.02]">
           <svg class="w-4 h-4 text-fuchsia-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           <span class="truncate max-w-[140px] sm:max-w-none">m3.wiecz0rek@gmail.com</span>
@@ -92,8 +98,12 @@
       </div>
     </header>
 
+    <!-- GŁÓWNA ZAWARTOŚĆ -->
     <main class="my-10 space-y-16">
 
+      <!-- =========================================================================
+           SEKCJA: TEST A / B
+           ========================================================================= -->
       <section class="space-y-6">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-3">
@@ -105,6 +115,7 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          <!-- ZDJĘCIE A -->
           <div class="glass-card rounded-3xl p-3 sm:p-4 border border-zinc-800/80 hover:border-fuchsia-500/60 transition duration-300">
             <div class="relative aspect-video rounded-2xl overflow-hidden bg-black shadow-2xl group">
               <img 
@@ -119,6 +130,7 @@
             </div>
           </div>
 
+          <!-- ZDJĘCIE B -->
           <div class="glass-card rounded-3xl p-3 sm:p-4 border border-zinc-800/80 hover:border-fuchsia-500/60 transition duration-300">
             <div class="relative aspect-video rounded-2xl overflow-hidden bg-black shadow-2xl group">
               <img 
@@ -135,6 +147,9 @@
         </div>
       </section>
 
+      <!-- =========================================================================
+           SEKCJA: CREATIVE PROCESS
+           ========================================================================= -->
       <section class="space-y-8 pt-8 border-t border-zinc-800/80">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-3">
@@ -145,6 +160,7 @@
           </div>
         </div>
 
+        <!-- 3 DUŻE ZDJĘCIA W RZĘDZIE -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           <div class="glass-card rounded-3xl p-4 sm:p-5 flex flex-col justify-between">
             <div class="relative aspect-video sm:aspect-[4/3] rounded-2xl overflow-hidden bg-black border border-zinc-800 shadow-xl group">
@@ -165,18 +181,21 @@
           </div>
         </div>
 
+        <!-- FINAŁ PROCESU: SUWAK BEFORE / AFTER -->
         <div class="glass-card rounded-3xl p-4 sm:p-6 glow-pink">
           <div id="compare-container" class="relative w-full aspect-video rounded-2xl overflow-hidden border border-zinc-700 bg-black cursor-ew-resize select-none">
             
+            <!-- SPÓD (BEFORE): Surowy model na białym tle (obniżony w pionie, idealnie widoczna twarz jako punkt startowy) -->
             <div class="absolute inset-0 w-full h-full">
               <img 
                 src="https://i.postimg.cc/C5Pr8BhX/raw-man-jpg.png" 
                 alt="Raw Asset" 
                 class="w-full h-full object-cover select-none pointer-events-none brightness-95 saturate-90"
-                style="object-position: center 20%;"
+                style="object-position: center 38%;"
               />
             </div>
 
+            <!-- WIERZCH (AFTER): Gotowa kolorowa grafika z chilibyć (odkrywana przez suwak) -->
             <div id="compare-before" class="absolute inset-0 w-full h-full pointer-events-none" style="clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);">
               <img 
                 src="https://i.postimg.cc/NFJCX9Gt/final-cover-jpg.png" 
@@ -185,6 +204,7 @@
               />
             </div>
 
+            <!-- Uchwyt suwaka -->
             <div id="compare-divider" class="absolute top-0 bottom-0 w-1 bg-fuchsia-400 cursor-ew-resize glow-pink-slider z-20 pointer-events-none" style="left: 50%;">
               <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-gradient-to-tr from-fuchsia-600 to-purple-400 border-2 border-white flex items-center justify-center text-white shadow-2xl">
                 <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -200,6 +220,7 @@
 
     </main>
 
+    <!-- FOOTER -->
     <footer class="pt-8 border-t border-zinc-800/80 flex flex-col sm:flex-row items-center justify-end gap-4 text-xs text-zinc-500">
       <div class="flex items-center gap-4 text-zinc-400">
         <button onclick="copyDiscordHandle()" class="hover:text-white transition font-medium">Discord: wiecz0rek_</button>
@@ -210,11 +231,13 @@
 
   </div>
 
+  <!-- Toast -->
   <div id="toast-notify" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-3 bg-zinc-900 border border-fuchsia-500 text-white px-5 py-3 rounded-2xl shadow-2xl">
     <div class="w-2.5 h-2.5 rounded-full bg-fuchsia-500 animate-pulse"></div>
     <span id="toast-text" class="text-xs font-bold">Skopiowano!</span>
   </div>
 
+  <!-- THREE.JS -->
   <script>
     let scene, camera, renderer;
     let floatingCards = [];
@@ -485,7 +508,7 @@
       renderer.render(scene, camera);
     }
 
-    // Suwak Before / After (klasyczny kierunek od lewej do prawej)
+    // Suwak Before / After
     function setupComparisonSlider() {
       const container = document.getElementById('compare-container');
       const before = document.getElementById('compare-before');
