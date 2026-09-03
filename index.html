@@ -185,17 +185,17 @@
         <div class="glass-card rounded-3xl p-4 sm:p-6 glow-pink">
           <div id="compare-container" class="relative w-full aspect-video rounded-2xl overflow-hidden border border-zinc-700 bg-black cursor-ew-resize select-none">
             
-            <!-- SPÓD (BEFORE): Surowy model na białym tle (obniżony w pionie, idealnie widoczna twarz jako punkt startowy) -->
+            <!-- SPÓD (BEFORE): Surowy model na białym tle (obniżony, z widoczną twarzą) -->
             <div class="absolute inset-0 w-full h-full">
               <img 
                 src="https://i.postimg.cc/C5Pr8BhX/raw-man-jpg.png" 
                 alt="Raw Asset" 
                 class="w-full h-full object-cover select-none pointer-events-none brightness-95 saturate-90"
-                style="object-position: center 38%;"
+                style="object-position: center 20%;"
               />
             </div>
 
-            <!-- WIERZCH (AFTER): Gotowa kolorowa grafika z chilibyć (odkrywana przez suwak) -->
+            <!-- WIERZCH (AFTER): Gotowa kolorowa grafika (odkrywana przez clip-path od lewej) -->
             <div id="compare-before" class="absolute inset-0 w-full h-full pointer-events-none" style="clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);">
               <img 
                 src="https://i.postimg.cc/NFJCX9Gt/final-cover-jpg.png" 
@@ -508,7 +508,7 @@
       renderer.render(scene, camera);
     }
 
-    // Suwak Before / After
+    // Suwak Before / After (klasyczny kierunek od lewej do prawej)
     function setupComparisonSlider() {
       const container = document.getElementById('compare-container');
       const before = document.getElementById('compare-before');
