@@ -64,17 +64,13 @@
 </head>
 <body class="min-h-full selection:bg-[#d946ef] selection:text-white">
 
-  <!-- Three.js: lewitujące i delikatnie pojawiające się kafelki w tle -->
   <canvas id="bg-webgl-canvas"></canvas>
 
-  <!-- Winietowanie i subtelna głębia tła -->
   <div class="fixed inset-0 pointer-events-none z-0 bg-gradient-to-t from-[#06050a] via-transparent to-[#06050a]/85"></div>
   <div class="fixed inset-0 pointer-events-none z-0" style="box-shadow: inset 0 0 160px rgba(0,0,0,0.92);"></div>
 
-  <!-- Główny kontener -->
   <div class="relative z-10 min-h-screen flex flex-col justify-between max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
- <!-- NAWIGACJA / HEADER (wersja responsywna) -->
     <header class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 py-4 border-b border-zinc-800/80">
       <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 w-full sm:w-auto">
         <span class="font-black text-xl sm:text-2xl text-white tracking-tight">MAJA WIECZOREK</span>
@@ -84,13 +80,11 @@
       </div>
 
       <div class="flex items-center gap-2 sm:gap-4 w-full sm:w-auto justify-between sm:justify-end">
-        <!-- Discord z kopiowaniem -->
         <button onclick="copyDiscordHandle()" class="glass-card px-4 py-2 sm:px-6 sm:py-3 rounded-2xl border border-zinc-800 hover:border-fuchsia-500/60 text-xs sm:text-sm font-semibold text-zinc-300 hover:text-white transition flex items-center gap-2 hover:scale-[1.02]">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
           <span>Discord: <strong class="text-white font-bold">wiecz0rek_</strong></span>
         </button>
 
-        <!-- Email -->
         <a href="mailto:m3.wiecz0rek@gmail.com" class="glass-card px-4 py-2 sm:px-6 sm:py-3 rounded-2xl border border-zinc-800 hover:border-fuchsia-500/60 text-xs sm:text-sm font-semibold text-zinc-300 hover:text-white transition flex items-center gap-2 hover:scale-[1.02]">
           <svg class="w-4 h-4 text-fuchsia-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           <span class="truncate max-w-[140px] sm:max-w-none">m3.wiecz0rek@gmail.com</span>
@@ -98,12 +92,8 @@
       </div>
     </header>
 
-    <!-- GŁÓWNA ZAWARTOŚĆ -->
     <main class="my-10 space-y-16">
 
-      <!-- =========================================================================
-           SEKCJA: TEST A / B (tylko napis i dwa duże zdjęcia obok siebie)
-           ========================================================================= -->
       <section class="space-y-6">
         
         <div class="flex items-center justify-between">
@@ -115,10 +105,8 @@
           </div>
         </div>
 
-        <!-- Dwie grafiki A i B w formacie 16:9 obok siebie -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           
-          <!-- ZDJĘCIE A -->
           <div class="glass-card rounded-3xl p-3 sm:p-4 border border-zinc-800/80 hover:border-fuchsia-500/60 transition duration-300">
             <div class="relative aspect-video rounded-2xl overflow-hidden bg-black shadow-2xl group">
               <img 
@@ -133,7 +121,6 @@
             </div>
           </div>
 
-          <!-- ZDJĘCIE B -->
           <div class="glass-card rounded-3xl p-3 sm:p-4 border border-zinc-800/80 hover:border-fuchsia-500/60 transition duration-300">
             <div class="relative aspect-video rounded-2xl overflow-hidden bg-black shadow-2xl group">
               <img 
@@ -152,9 +139,6 @@
 
       </section>
 
-      <!-- =========================================================================
-           SEKCJA: CREATIVE PROCESS (3 duże zdjęcia w rzędzie + suwak Before/After)
-           ========================================================================= -->
       <section class="space-y-8 pt-8 border-t border-zinc-800/80">
         
         <div class="flex items-center justify-between">
@@ -166,10 +150,8 @@
           </div>
         </div>
 
-        <!-- 3 DUŻE POWIĘKSZONE ZDJĘCIA W JEDNYM RZĘDZIE -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           
-          <!-- 1. Model ze stocku -->
           <div class="glass-card rounded-3xl p-4 sm:p-5 flex flex-col justify-between">
             <div class="relative aspect-video sm:aspect-[4/3] rounded-2xl overflow-hidden bg-black border border-zinc-800 shadow-xl group">
               <img 
@@ -181,7 +163,6 @@
             </div>
           </div>
 
-          <!-- 2. Nocny dom / tło -->
           <div class="glass-card rounded-3xl p-4 sm:p-5 flex flex-col justify-between">
             <div class="relative aspect-video sm:aspect-[4/3] rounded-2xl overflow-hidden bg-black border border-zinc-800 shadow-xl group">
               <img 
@@ -193,7 +174,6 @@
             </div>
           </div>
 
-          <!-- 3. Płonąca gotówka (podmieniona w miejsce płaskiego banknotu) -->
           <div class="glass-card rounded-3xl p-4 sm:p-5 flex flex-col justify-between">
             <div class="relative aspect-video sm:aspect-[4/3] rounded-2xl overflow-hidden bg-black border border-zinc-800 shadow-xl group">
               <img 
@@ -207,11 +187,9 @@
 
         </div>
 
-        <!-- FINAŁ PROCESU: DUŻY SUWAK BEFORE / AFTER -->
         <div class="glass-card rounded-3xl p-4 sm:p-6 glow-pink">
           <div id="compare-container" class="relative w-full aspect-video rounded-2xl overflow-hidden border border-zinc-700 bg-black cursor-ew-resize select-none">
             
-            <!-- AFTER: Gotowa okładka -->
             <div class="absolute inset-0 w-full h-full">
               <img 
                 src="https://i.postimg.cc/NFJCX9Gt/final-cover-jpg.png" 
@@ -221,27 +199,23 @@
               />
             </div>
 
-<!-- BEFORE: Surowy model ze stocku -->
-            <div id="compare-before" class="absolute inset-0 h-full overflow-hidden" style="width: 50%;">
-              <div class="absolute inset-y-0 left-0 h-full" style="width: 100vw; min-width: 100vw;">
-                <img 
-                  src="https://i.postimg.cc/C5Pr8BhX/raw-man-jpg.png" 
-                  alt="Raw Asset" 
-                  class="absolute inset-0 w-full h-full object-cover object-center select-none pointer-events-none brightness-90 saturate-75"
-                  onerror="this.src='https://placehold.co/1280x720/181a20/aaa?text=RAW+MODEL';"
-                />
-              </div>
+            <div id="compare-before" class="absolute inset-0 w-full h-full pointer-events-none" style="clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);">
+              <img 
+                src="https://i.postimg.cc/C5Pr8BhX/raw-man-jpg.png" 
+                alt="Raw Asset" 
+                class="w-full h-full object-cover object-center select-none pointer-events-none brightness-90 saturate-75"
+                onerror="this.src='https://placehold.co/1280x720/181a20/aaa?text=RAW+MODEL';"
+              />
             </div>
-            </div>
-            
-            <!-- Uchwyt suwaka -->
-            <div id="compare-divider" class="absolute top-0 bottom-0 w-1 bg-fuchsia-400 cursor-ew-resize glow-pink-slider z-20" style="left: 50%;">
+
+            <div id="compare-divider" class="absolute top-0 bottom-0 w-1 bg-fuchsia-400 cursor-ew-resize glow-pink-slider z-20 pointer-events-none" style="left: 50%;">
               <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-gradient-to-tr from-fuchsia-600 to-purple-400 border-2 border-white flex items-center justify-center text-white shadow-2xl">
                 <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 7l-5 5 5 5m8-10l5 5-5 5"/>
                 </svg>
               </div>
             </div>
+
           </div>
         </div>
 
@@ -249,7 +223,6 @@
 
     </main>
 
-    <!-- FOOTER -->
     <footer class="pt-8 border-t border-zinc-800/80 flex flex-col sm:flex-row items-center justify-end gap-4 text-xs text-zinc-500">
       <div class="flex items-center gap-4 text-zinc-400">
         <button onclick="copyDiscordHandle()" class="hover:text-white transition font-medium">Discord: wiecz0rek_</button>
@@ -260,15 +233,11 @@
 
   </div>
 
-  <!-- Toast z powiadomieniem -->
   <div id="toast-notify" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-3 bg-zinc-900 border border-fuchsia-500 text-white px-5 py-3 rounded-2xl shadow-2xl">
     <div class="w-2.5 h-2.5 rounded-full bg-fuchsia-500 animate-pulse"></div>
     <span id="toast-text" class="text-xs font-bold">Skopiowano!</span>
   </div>
 
-  <!-- =========================================================================
-       THREE.JS: SPOKOJNE, DELIKATNIE POJAWIAJĄCE SIĘ I LEWITUJĄCE KAFELKI 3D
-       ========================================================================= -->
   <script>
     let scene, camera, renderer;
     let floatingCards = [];
@@ -399,14 +368,13 @@
           map: texObj.texture,
           side: THREE.DoubleSide,
           transparent: true,
-          opacity: 0.0, // Zaczynają niewidoczne, łagodnie się wyłaniają
+          opacity: 0.0,
           roughness: 0.3,
           metalness: 0.15
         });
 
         const mesh = new THREE.Mesh(squareGeo, material);
         
-        // Rozłożenie po całej scenie
         const baseX = (Math.random() - 0.5) * 34;
         const baseY = (Math.random() - 0.5) * 24;
         const baseZ = (Math.random() - 0.5) * 22 - 3;
@@ -526,30 +494,21 @@
     function animate3DScene() {
       requestAnimationFrame(animate3DScene);
 
-      // Płynna paralaksa za ruchem kursora
       camera.position.x += (mouseX * 2.0 - camera.position.x) * 0.035;
       camera.position.y += (mouseY * 1.5 - camera.position.y) * 0.035;
       camera.lookAt(0, 0, 0);
 
       const time = performance.now() * 0.001;
 
-      // Zamiast spadania: spokojne wyłanianie się (fade-in), pulsowanie i miękka lewitacja
       for (let i = 0; i < floatingCards.length; i++) {
         const c = floatingCards[i];
-
-        // Delikatne pojawianie się i znikanie (breathe / fade in/out)
         const pulse = (Math.sin(time * c.fadeSpeed + c.phase) + 1) / 2;
         c.material.opacity = 0.05 + pulse * c.maxOpacity;
-
-        // Łagodne unoszenie się wokół pozycji bazowej
         c.mesh.position.y = c.baseY + Math.sin(time * c.swaySpeed + c.phase) * 0.7;
         c.mesh.position.x = c.baseX + Math.cos(time * (c.swaySpeed * 0.7) + c.phase) * 0.5;
-
-        // Subtelna rotacja
         c.mesh.rotation.z = Math.sin(time * 0.2 + c.phase) * 0.08;
       }
 
-      // Falowanie cząsteczek bokeh
       if (bokehParticles) {
         const arr = bokehParticles.geometry.attributes.position.array;
         for (let b = 1; b < arr.length; b += 3) {
@@ -562,7 +521,7 @@
       renderer.render(scene, camera);
     }
 
-    // Suwak Before / After
+    // Suwak Before / After zoptymalizowany pod kątem braku skalowania
     function setupComparisonSlider() {
       const container = document.getElementById('compare-container');
       const before = document.getElementById('compare-before');
@@ -576,7 +535,9 @@
         if (x < 0) x = 0;
         if (x > rect.width) x = rect.width;
         const pct = (x / rect.width) * 100;
-        before.style.width = pct + '%';
+        
+        // Płynne przycinanie przez clip-path - zdjęcie w ogóle się nie skaluje!
+        before.style.clipPath = `polygon(0 0, ${pct}% 0, ${pct}% 100%, 0 100%)`;
         divider.style.left = pct + '%';
       }
 
