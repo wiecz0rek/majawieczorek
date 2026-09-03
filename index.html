@@ -50,7 +50,7 @@
       box-shadow: 0 0 35px -5px rgba(224, 102, 219, 0.28);
     }
 
-    /* Akcenty różowe (ciemniejszy, elegancki róż) */
+    /* Akcenty różowe */
     .glow-pink {
       box-shadow: 0 0 35px -5px rgba(224, 102, 219, 0.32);
     }
@@ -95,7 +95,6 @@
     <main class="my-10 space-y-16">
 
       <section class="space-y-6">
-        
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-3">
             <span class="w-3 h-3 rounded-full bg-fuchsia-500 animate-pulse"></span>
@@ -106,7 +105,6 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-          
           <div class="glass-card rounded-3xl p-3 sm:p-4 border border-zinc-800/80 hover:border-fuchsia-500/60 transition duration-300">
             <div class="relative aspect-video rounded-2xl overflow-hidden bg-black shadow-2xl group">
               <img 
@@ -134,13 +132,10 @@
               </div>
             </div>
           </div>
-
         </div>
-
       </section>
 
       <section class="space-y-8 pt-8 border-t border-zinc-800/80">
-        
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-3">
             <span class="w-3 h-3 rounded-full bg-purple-400"></span>
@@ -151,61 +146,34 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-          
           <div class="glass-card rounded-3xl p-4 sm:p-5 flex flex-col justify-between">
             <div class="relative aspect-video sm:aspect-[4/3] rounded-2xl overflow-hidden bg-black border border-zinc-800 shadow-xl group">
-              <img 
-                src="https://i.postimg.cc/C5Pr8BhX/raw-man-jpg.png" 
-                alt="Raw Stock Talent" 
-                class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" 
-                onerror="this.src='https://placehold.co/800x600/111/d946ef?text=Raw+Model';" 
-              />
+              <img src="https://i.postimg.cc/C5Pr8BhX/raw-man-jpg.png" alt="Raw Stock Talent" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
             </div>
           </div>
 
           <div class="glass-card rounded-3xl p-4 sm:p-5 flex flex-col justify-between">
             <div class="relative aspect-video sm:aspect-[4/3] rounded-2xl overflow-hidden bg-black border border-zinc-800 shadow-xl group">
-              <img 
-                src="https://i.postimg.cc/KjqpTkcy/bg-house-jpg.jpg" 
-                alt="Night House Setting" 
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
-                onerror="this.src='https://placehold.co/800x600/111/d946ef?text=House';" 
-              />
+              <img src="https://i.postimg.cc/KjqpTkcy/bg-house-jpg.jpg" alt="Night House Setting" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             </div>
           </div>
 
           <div class="glass-card rounded-3xl p-4 sm:p-5 flex flex-col justify-between">
             <div class="relative aspect-video sm:aspect-[4/3] rounded-2xl overflow-hidden bg-black border border-zinc-800 shadow-xl group">
-              <img 
-                src="https://i.postimg.cc/FzWCSdFh/money-fire-png.png" 
-                alt="Burning Money Elements" 
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
-                onerror="this.src='https://placehold.co/800x600/111/d946ef?text=Money+Fire';" 
-              />
+              <img src="https://i.postimg.cc/FzWCSdFh/money-fire-png.png" alt="Burning Money Elements" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             </div>
           </div>
-
         </div>
 
         <div class="glass-card rounded-3xl p-4 sm:p-6 glow-pink">
           <div id="compare-container" class="relative w-full aspect-video rounded-2xl overflow-hidden border border-zinc-700 bg-black cursor-ew-resize select-none">
             
             <div class="absolute inset-0 w-full h-full">
-              <img 
-                src="https://i.postimg.cc/NFJCX9Gt/final-cover-jpg.png" 
-                alt="Final Result" 
-                class="w-full h-full object-cover select-none pointer-events-none"
-                onerror="this.src='https://placehold.co/1280x720/121018/d946ef?text=FINAL+COVER';"
-              />
+              <img src="https://i.postimg.cc/NFJCX9Gt/final-cover-jpg.png" alt="Final Result" class="w-full h-full object-cover select-none pointer-events-none" />
             </div>
 
             <div id="compare-before" class="absolute inset-0 w-full h-full pointer-events-none" style="clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);">
-              <img 
-                src="https://i.postimg.cc/C5Pr8BhX/raw-man-jpg.png" 
-                alt="Raw Asset" 
-                class="w-full h-full object-cover object-center select-none pointer-events-none brightness-90 saturate-75"
-                onerror="this.src='https://placehold.co/1280x720/181a20/aaa?text=RAW+MODEL';"
-              />
+              <img src="https://i.postimg.cc/C5Pr8BhX/raw-man-jpg.png" alt="Raw Asset" class="w-full h-full object-cover select-none pointer-events-none brightness-95 saturate-90 scale-[1.15]" style="object-position: 70% center;" />
             </div>
 
             <div id="compare-divider" class="absolute top-0 bottom-0 w-1 bg-fuchsia-400 cursor-ew-resize glow-pink-slider z-20 pointer-events-none" style="left: 50%;">
@@ -301,7 +269,6 @@
         ctx.rect(12, 12, canvas.width - 24, canvas.height - 24);
       }
       ctx.clip();
-
       ctx.filter = `blur(${blurPx}px)`;
 
       if (imgElement && imgElement.complete && imgElement.naturalWidth > 0) {
@@ -357,9 +324,7 @@
         if (imgItem.complete && imgItem.naturalWidth > 0) {
           refreshTexture(texObj, blurAmount);
         } else {
-          imgItem.onload = () => {
-            refreshTexture(texObj, blurAmount);
-          };
+          imgItem.onload = () => { refreshTexture(texObj, blurAmount); };
         }
 
         const material = new THREE.MeshStandardMaterial({
@@ -372,17 +337,12 @@
         });
 
         const mesh = new THREE.Mesh(squareGeo, material);
-        
         const baseX = (Math.random() - 0.5) * 34;
         const baseY = (Math.random() - 0.5) * 24;
         const baseZ = (Math.random() - 0.5) * 22 - 3;
 
         mesh.position.set(baseX, baseY, baseZ);
-        mesh.rotation.set(
-          (Math.random() - 0.5) * 0.4,
-          (Math.random() - 0.5) * 0.4,
-          (Math.random() - 0.5) * 0.3
-        );
+        mesh.rotation.set((Math.random() - 0.5) * 0.4, (Math.random() - 0.5) * 0.4, (Math.random() - 0.5) * 0.3);
         const scale = 0.8 + Math.random() * 0.5;
         mesh.scale.set(scale, scale, scale);
 
@@ -408,7 +368,6 @@
       const cornerRadius = 32;
 
       ctx.clearRect(0, 0, c.width, c.height);
-
       ctx.save();
       ctx.beginPath();
       if (ctx.roundRect) {
@@ -417,7 +376,6 @@
         ctx.rect(12, 12, c.width - 24, c.height - 24);
       }
       ctx.clip();
-
       ctx.filter = `blur(${blurPx}px)`;
 
       const img = texObj.imgElement;
@@ -491,7 +449,6 @@
 
     function animate3DScene() {
       requestAnimationFrame(animate3DScene);
-
       camera.position.x += (mouseX * 2.0 - camera.position.x) * 0.035;
       camera.position.y += (mouseY * 1.5 - camera.position.y) * 0.035;
       camera.lookAt(0, 0, 0);
@@ -519,7 +476,7 @@
       renderer.render(scene, camera);
     }
 
-    // Suwak Before / After zoptymalizowany pod pozycję twarzy i brak skalowania
+    // Suwak Before / After
     function setupComparisonSlider() {
       const container = document.getElementById('compare-container');
       const before = document.getElementById('compare-before');
@@ -534,13 +491,11 @@
         if (x > rect.width) x = rect.width;
         const pct = (x / rect.width) * 100;
         
-        // Płynne przycinanie od prawej strony, żeby twarz i postać były w pełni widoczne
         before.style.clipPath = `polygon(${pct}% 0, 100% 0, 100% 100%, ${pct}% 100%)`;
         divider.style.left = pct + '%';
       }
 
       if (container) {
-        // Pozycja początkowa na 50%
         before.style.clipPath = 'polygon(50% 0, 100% 0, 100% 100%, 50% 100%)';
         divider.style.left = '50%';
 
@@ -564,7 +519,6 @@
       }
     }
 
-    // Kopiowanie Discorda i powiadomienie toast
     function showToast(msg) {
       const toast = document.getElementById('toast-notify');
       const text = document.getElementById('toast-text');
@@ -596,7 +550,6 @@
       document.body.removeChild(el);
     }
 
-    // Inicjalizacja po załadowaniu DOM
     if (document.readyState === 'loading') {
       window.addEventListener('DOMContentLoaded', () => {
         init3DBackground();
