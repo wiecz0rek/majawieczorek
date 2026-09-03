@@ -74,27 +74,26 @@
   <!-- Główny kontener -->
   <div class="relative z-10 min-h-screen flex flex-col justify-between max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
-    <!-- NAWIGACJA / HEADER (tylko imię, stanowisko i bezpośredni kontakt) -->
-    <header class="flex items-center justify-between gap-4 py-3 border-b border-zinc-800/80">
-      <div class="flex items-center gap-3 sm:gap-4">
+ <!-- NAWIGACJA / HEADER (wersja responsywna) -->
+    <header class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 py-4 border-b border-zinc-800/80">
+      <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 w-full sm:w-auto">
         <span class="font-black text-xl sm:text-2xl text-white tracking-tight">MAJA WIECZOREK</span>
-        <span class="px-4 py-1.5 rounded-2xl text-xs sm:text-[13px] font-extrabold uppercase tracking-wider bg-fuchsia-500/15 text-fuchsia-300 border border-fuchsia-500/35 shadow-sm shadow-fuchsia-500/10">
+        <span class="px-3 py-1 rounded-xl text-[11px] sm:text-[13px] font-extrabold uppercase tracking-wider bg-fuchsia-500/15 text-fuchsia-300 border border-fuchsia-500/35 shadow-sm shadow-fuchsia-500/10 w-fit">
           LEAD THUMBNAIL DESIGNER &amp; KEY ART SPECIALIST
         </span>
       </div>
 
-      <div class="flex items-center gap-3 sm:gap-4">
-        <!-- Discord z kopiowaniem (powiększony, czarne szkło) -->
-        <button onclick="copyDiscordHandle()" class="glass-card px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl border border-zinc-800 hover:border-fuchsia-500/60 text-xs sm:text-sm font-semibold text-zinc-300 hover:text-white transition flex items-center gap-2.5 hover:scale-[1.02]">
-          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+      <div class="flex items-center gap-2 sm:gap-4 w-full sm:w-auto justify-between sm:justify-end">
+        <!-- Discord z kopiowaniem -->
+        <button onclick="copyDiscordHandle()" class="glass-card px-4 py-2 sm:px-6 sm:py-3 rounded-2xl border border-zinc-800 hover:border-fuchsia-500/60 text-xs sm:text-sm font-semibold text-zinc-300 hover:text-white transition flex items-center gap-2 hover:scale-[1.02]">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
           <span>Discord: <strong class="text-white font-bold">wiecz0rek_</strong></span>
         </button>
 
-        <!-- Email (taki sam styl jak Discord na czarno, powiększony) -->
-        <a href="mailto:m3.wiecz0rek@gmail.com" class="glass-card px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl border border-zinc-800 hover:border-fuchsia-500/60 text-xs sm:text-sm font-semibold text-zinc-300 hover:text-white transition flex items-center gap-2.5 hover:scale-[1.02]">
-          <svg class="w-4 h-4 text-fuchsia-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-          <span class="hidden sm:inline">m3.wiecz0rek@gmail.com</span>
-          <span class="sm:hidden">Email</span>
+        <!-- Email -->
+        <a href="mailto:m3.wiecz0rek@gmail.com" class="glass-card px-4 py-2 sm:px-6 sm:py-3 rounded-2xl border border-zinc-800 hover:border-fuchsia-500/60 text-xs sm:text-sm font-semibold text-zinc-300 hover:text-white transition flex items-center gap-2 hover:scale-[1.02]">
+          <svg class="w-4 h-4 text-fuchsia-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <span class="truncate max-w-[140px] sm:max-w-none">m3.wiecz0rek@gmail.com</span>
         </a>
       </div>
     </header>
