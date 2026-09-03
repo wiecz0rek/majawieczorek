@@ -169,11 +169,20 @@
           <div id="compare-container" class="relative w-full aspect-video rounded-2xl overflow-hidden border border-zinc-700 bg-black cursor-ew-resize select-none">
             
             <div class="absolute inset-0 w-full h-full">
-              <img src="https://i.postimg.cc/NFJCX9Gt/final-cover-jpg.png" alt="Final Result" class="w-full h-full object-cover select-none pointer-events-none" />
+              <img 
+                src="https://i.postimg.cc/C5Pr8BhX/raw-man-jpg.png" 
+                alt="Raw Asset" 
+                class="w-full h-full object-cover select-none pointer-events-none brightness-95 saturate-90"
+                style="object-position: center 20%;"
+              />
             </div>
 
-            <div id="compare-before" class="absolute inset-0 w-full h-full pointer-events-none" style="clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);">
-              <img src="https://i.postimg.cc/C5Pr8BhX/raw-man-jpg.png" alt="Raw Asset" class="w-full h-full object-cover select-none pointer-events-none brightness-95 saturate-90 scale-[1.15]" style="object-position: 70% center;" />
+            <div id="compare-before" class="absolute inset-0 w-full h-full pointer-events-none" style="clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);">
+              <img 
+                src="https://i.postimg.cc/NFJCX9Gt/final-cover-jpg.png" 
+                alt="Final Result" 
+                class="w-full h-full object-cover select-none pointer-events-none"
+              />
             </div>
 
             <div id="compare-divider" class="absolute top-0 bottom-0 w-1 bg-fuchsia-400 cursor-ew-resize glow-pink-slider z-20 pointer-events-none" style="left: 50%;">
@@ -476,7 +485,7 @@
       renderer.render(scene, camera);
     }
 
-    // Suwak Before / After
+    // Suwak Before / After (klasyczny kierunek od lewej do prawej)
     function setupComparisonSlider() {
       const container = document.getElementById('compare-container');
       const before = document.getElementById('compare-before');
@@ -491,12 +500,12 @@
         if (x > rect.width) x = rect.width;
         const pct = (x / rect.width) * 100;
         
-        before.style.clipPath = `polygon(${pct}% 0, 100% 0, 100% 100%, ${pct}% 100%)`;
+        before.style.clipPath = `polygon(0 0, ${pct}% 0, ${pct}% 100%, 0 100%)`;
         divider.style.left = pct + '%';
       }
 
       if (container) {
-        before.style.clipPath = 'polygon(50% 0, 100% 0, 100% 100%, 50% 100%)';
+        before.style.clipPath = 'polygon(0 0, 50% 0, 50% 100%, 0 100%)';
         divider.style.left = '50%';
 
         container.addEventListener('mousedown', (e) => {
